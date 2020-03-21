@@ -5,7 +5,7 @@ import './main.css'
 
 const Data = []
 let NEWDATAINDEX = 1
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 2; i++) {
   Data.push(i)
 }
 class PullupScrollPage extends Component {

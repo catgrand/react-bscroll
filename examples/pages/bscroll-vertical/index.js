@@ -4,7 +4,7 @@ import Scroll from 'src/scroll'
 import './main.css'
 
 const Data = []
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 1; i++) {
   Data.push(i)
 }
 class VerticalScrollPage extends Component {
@@ -31,7 +31,7 @@ class VerticalScrollPage extends Component {
     return (
       <div>
         <div className="container">
-          <Scroll>
+          <Scroll mouseWheel>
             <ul className="content">
               {this.state.listData.map((item, index) =>
                 (<li className="content-item"

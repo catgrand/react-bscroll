@@ -100,6 +100,7 @@ class Scroll extends Component {
         top: `${this.pullDownInitTop}px`,
       },
       bubbleY: 0,
+      paddingBottom:0,
     }
 
   }
@@ -142,6 +143,7 @@ class Scroll extends Component {
     } : (pullUpLoad ? defaultPullUpLoad : false)
 
     this.options = {
+      ...this.props,
       probeType,
       click,
       startY,
@@ -157,6 +159,9 @@ class Scroll extends Component {
       stopPropagation:stopPropagation,
     }
     let wrapper = this.refs.$dom
+    this.setState({ 
+      paddingBottom: this.refs.$dom.offsetHeight 
+    })
     this.scroll = new BScroll(wrapper, this.options)
     this.initEvents()
   }
@@ -364,8 +369,10 @@ class Scroll extends Component {
     return (
       <div className="b-wrapper" ref="$dom">
         <div className="b-scroll-content">
-          {this.props.children}
-          {this.renderPullUpLoad()}
+          <div className='b-scroll-padding-bottom' style={{ minHeight: this.state.paddingBottom + 1 }}>
+            {this.props.children}
+            {this.renderPullUpLoad()}
+          </div>
         </div>
         {this.renderPullUpDown()}
       </div>
